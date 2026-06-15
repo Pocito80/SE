@@ -13,3 +13,7 @@ class WaterLevelSensor(Sensor):
 
     def getWaterLevel(self) -> float:
         return self.currentLevel
+
+    def transmitData(self) -> None:
+        self.currentLevel += 1.0
+
