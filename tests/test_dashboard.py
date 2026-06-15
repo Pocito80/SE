@@ -27,5 +27,19 @@ class TestDashboard(unittest.TestCase):
         self.assertEqual(dashboard.checkThreshold(15.0), ThresholdStatus.WARNING)
         self.assertEqual(dashboard.checkThreshold(25.0), ThresholdStatus.CRITICAL)
 
+    def test_trigger_visual_alert_on_critical(self):
+        from unittest.mock import patch
+        from src.dashboard import Dashboard
+        from src.config import ThresholdConfig
+        
+        with patch('src.dashboard.AlertManager') as mock_alert_manager_cls:
+            mock_alert_manager = mock_alert_manager_cls.return_value
+            config = ThresholdConfig(warningLevel=10.0, criticalLevel=20.0)
+            
+            dashboard = Dashboard(sensors=[], config=config)
+            dashboard.updateChart(25.0)
+            
+            mock_alert_manager.triggerVisualAlert.assert_called_once_with(25.0)
+
 if __name__ == "__main__":
     unittest.main()
