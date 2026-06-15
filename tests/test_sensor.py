@@ -17,5 +17,11 @@ class TestWaterLevelSensor(unittest.TestCase):
         sensor = WaterLevelSensor(sensorID="sensor-123", status="OK", initialLevel=12.34)
         self.assertEqual(sensor.getWaterLevel(), 12.34)
 
+    def test_transmit_data(self):
+        from src.sensor import WaterLevelSensor
+        sensor = WaterLevelSensor(sensorID="sensor-123", status="OK", initialLevel=5.0)
+        sensor.transmitData()
+        self.assertNotEqual(sensor.getWaterLevel(), 5.0)
+
 if __name__ == "__main__":
     unittest.main()
