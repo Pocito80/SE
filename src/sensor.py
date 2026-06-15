@@ -7,9 +7,9 @@ class Sensor:
         return True
 
 class WaterLevelSensor(Sensor):
-    def __init__(self, sensorID: str, status: str) -> None:
+    def __init__(self, sensorID: str, status: str, initialLevel: float = 0.0) -> None:
         super().__init__(sensorID, status)
-        self.currentLevel: float = 0.0
+        self.currentLevel: float = initialLevel
 
     def getWaterLevel(self) -> float:
         return self.currentLevel
