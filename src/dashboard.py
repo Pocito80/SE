@@ -7,4 +7,4 @@ class Dashboard:
         self.displayStatus: float = 0.0
 
     def updateChart(self, level: float) -> None:
-        self.displayStatus = level
+        self.displayStatus = round(level, 2)
