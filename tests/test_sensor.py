@@ -22,6 +22,9 @@ class TestWaterLevelSensor(unittest.TestCase):
         sensor = WaterLevelSensor(sensorID="sensor-123", status="OK", initialLevel=5.0)
         sensor.transmitData()
         self.assertNotEqual(sensor.getWaterLevel(), 5.0)
+        
+        sensor.transmitData(forcedValue=15.7)
+        self.assertEqual(sensor.getWaterLevel(), 15.7)
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,3 +1,5 @@
+from typing import Optional
+
 class Sensor:
     def __init__(self, sensorID: str, status: str) -> None:
         self.sensorID: str = sensorID
@@ -14,6 +16,9 @@ class WaterLevelSensor(Sensor):
     def getWaterLevel(self) -> float:
         return self.currentLevel
 
-    def transmitData(self) -> None:
-        self.currentLevel += 1.0
+    def transmitData(self, forcedValue: Optional[float] = None) -> None:
+        if forcedValue is not None:
+            self.currentLevel = forcedValue
+        else:
+            self.currentLevel += 1.0
 
