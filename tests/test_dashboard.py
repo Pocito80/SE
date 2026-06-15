@@ -31,14 +31,19 @@ class TestDashboard(unittest.TestCase):
         from unittest.mock import patch
         from src.dashboard import Dashboard
         from src.config import ThresholdConfig
+        import time
         
         with patch('src.dashboard.AlertManager') as mock_alert_manager_cls:
             mock_alert_manager = mock_alert_manager_cls.return_value
             config = ThresholdConfig(warningLevel=10.0, criticalLevel=20.0)
             
             dashboard = Dashboard(sensors=[], config=config)
-            dashboard.updateChart(25.0)
             
+            start_time = time.perf_counter()
+            dashboard.updateChart(25.0)
+            end_time = time.perf_counter()
+            
+            self.assertLess(end_time - start_time, 2.0)
             mock_alert_manager.triggerVisualAlert.assert_called_once_with(25.0)
 
 if __name__ == "__main__":
