@@ -18,6 +18,14 @@ class TestDashboard(unittest.TestCase):
         dashboard.updateChart(15.546)
         self.assertEqual(dashboard.displayStatus, 15.55)
 
+    def test_check_threshold(self):
+        from src.dashboard import Dashboard
+        from src.config import ThresholdConfig
+        config = ThresholdConfig(warningLevel=10.0, criticalLevel=20.0)
+        dashboard = Dashboard(sensors=[], config=config)
+        self.assertEqual(dashboard.checkThreshold(5.0), "OK")
+        self.assertEqual(dashboard.checkThreshold(15.0), "WARNING")
+        self.assertEqual(dashboard.checkThreshold(25.0), "CRITICAL")
 
 if __name__ == "__main__":
     unittest.main()
