@@ -3,7 +3,7 @@ class Sensor:
         self.sensorID: str = sensorID
         self.status: str = status
 
-    def pingStatus(self):
+    def pingStatus(self) -> bool:
         return True
 
 class WaterLevelSensor(Sensor):
