@@ -2,7 +2,6 @@ import unittest
 
 class TestDashboard(unittest.TestCase):
     def test_dashboard_sensor_aggregation(self):
-        # This will fail because src.dashboard does not exist yet or doesn't have Dashboard class
         from src.sensor import WaterLevelSensor
         from src.dashboard import Dashboard
 
