@@ -12,5 +12,12 @@ class TestDashboard(unittest.TestCase):
         dashboard = Dashboard(sensors=sensors)
         self.assertEqual(dashboard.sensors, sensors)
 
+    def test_update_chart(self):
+        from src.dashboard import Dashboard
+        dashboard = Dashboard(sensors=[])
+        dashboard.updateChart(15.5)
+        self.assertEqual(dashboard.displayStatus, 15.5)
+
+
 if __name__ == "__main__":
     unittest.main()
