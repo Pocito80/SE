@@ -2,6 +2,7 @@ from enum import Enum
 from typing import List, Optional
 from src.sensor import WaterLevelSensor
 from src.config import ThresholdConfig
+from src.alert import AlertManager
 
 class ThresholdStatus(Enum):
     OK = "OK"
@@ -13,9 +14,12 @@ class Dashboard:
         self.sensors: List[WaterLevelSensor] = sensors
         self.config: Optional[ThresholdConfig] = config
         self.displayStatus: float = 0.0
+        self.alert_manager: AlertManager = AlertManager()
 
     def updateChart(self, level: float) -> None:
         self.displayStatus = round(level, 2)
+        if self.checkThreshold(level) == ThresholdStatus.CRITICAL:
+            self.alert_manager.triggerVisualAlert(level)
 
     def checkThreshold(self, level: float) -> ThresholdStatus:
         if self.config is None:
