@@ -1,3 +1,5 @@
+EMAIL_ALERT_TEMPLATE = "Critical water level alert!"
+
 def send_email_api(operatorID: str, message: str) -> None:
     pass
 
@@ -6,4 +8,4 @@ class AlertManager:
         pass
 
     def dispatchEmail(self, operatorID: str) -> None:
-        send_email_api(operatorID=operatorID, message="Critical water level alert!")
+        send_email_api(operatorID=operatorID, message=EMAIL_ALERT_TEMPLATE)
