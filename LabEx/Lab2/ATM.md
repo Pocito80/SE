@@ -1,0 +1,1 @@
+This diagram illustrates the interactions between a Customer and an ATM System. It shows core actions like withdrawing cash, checking balances, and depositing funds, all of which mandatory include PIN authentication. Additionally, the option to print a receipt extends the cash withdrawal process as an optional step.

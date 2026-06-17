@@ -1,0 +1,1 @@
+This diagram showcase a clinic management system, using a inheritance hierarchy where Patient and Staff inherit from a base Person class, and Doctor inherits from Staff. A Doctor treats multiple Patient entities, who each own one or more MedicalRecord objects. The Clinic itself maintains these records through a compositional relationship.

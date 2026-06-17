@@ -1,0 +1,1 @@
+This diagram represents a vehicle insurance system centered around a core Policy class. An InsuranceCompany issues policies, which are subsequently purchased by a Customer. The Policy class manages the rest of the system, using composition to cover one or more Vehicle entities and aggregation to track multiple filed Claim records.
